@@ -14,6 +14,7 @@ fn main() {
             Ok(num) => num,
             Err(_) => continue
         };
+        give_feedback(&guess, &secret_number);
         if is_correct_guess(&guess, &secret_number) {
             break;
         }
@@ -26,16 +27,16 @@ fn generate_secret_number() -> u8 {
     rand::thread_rng().gen_range(1..=100)
 }
 
-fn is_correct_guess(guess: &u8, secret_number: &u8) -> bool {
+fn give_feedback(guess: &u8, secret_number: &u8) {
     match &guess.cmp(&secret_number) {
         Ordering::Less => println!("Too small!"),
         Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => {
-            println!("You win!");
-            return true;
-        }
+        Ordering::Equal => println!("You win!")
     }
-    return false;
+}
+
+fn is_correct_guess(guess: &u8, secret_number: &u8) -> bool {
+    return guess == secret_number;
 }
 
 fn input_guess() -> Result<u8, ParseIntError> {
