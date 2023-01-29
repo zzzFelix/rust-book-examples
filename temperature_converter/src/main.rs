@@ -2,10 +2,10 @@ use std::io;
 
 fn main() {
     let scale = input_scale();
-    let value = input_temperature();
-    let result = convert(value, scale);
-    let invert_scale = invert_scale(scale);
-    println!("{value}˚{scale} = {result}˚{invert_scale}");
+    let temperature = input_temperature();
+    let result_temperature = convert(temperature, scale);
+    let result_scale = invert_scale(scale);
+    println!("{temperature}˚{scale} = {result_temperature}˚{result_scale}");
 }
 
 fn convert(input_value: f64, input_scale: char) -> f64 {
