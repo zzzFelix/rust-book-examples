@@ -36,12 +36,12 @@ fn handle_edge_cases(n: usize) -> Integer {
 }
 
 fn input_n() -> usize {
-    println!("Please input a number between 0 and 1000000");
+    println!("Please input a number between 0 and 1_000_000");
     let mut n = String::new();
     io::stdin().read_line(&mut n).expect("Not a valid input");
-    match n.trim().parse() {
+    match n.trim().replace("_", "").parse() {
         Ok(n) => match n {
-            0..=1000000 => n,
+            0..=1_000_000 => n,
             _ => retry_input(),
         },
         Err(_) => retry_input(),
